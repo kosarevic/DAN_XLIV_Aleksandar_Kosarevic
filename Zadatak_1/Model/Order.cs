@@ -11,14 +11,14 @@ namespace Zadatak_1.Model
         public int Id { get; set; }
         public DateTime OrderTimeStamp { get; set; }
         public User User { get; set; }
-        public double Price { get; set; }
+        public int Price { get; set; }
         public bool Approved { get; set; }
 
         public Order()
         {
         }
 
-        public Order(int id, DateTime orderTimeStamp, User user, double price, bool approved)
+        public Order(int id, DateTime orderTimeStamp, User user, int price, bool approved)
         {
             Id = id;
             OrderTimeStamp = orderTimeStamp;

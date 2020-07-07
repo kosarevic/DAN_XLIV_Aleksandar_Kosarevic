@@ -16,6 +16,11 @@ namespace Zadatak_1.Model
         {
         }
 
+        public User(int id)
+        {
+            Id = id;
+        }
+
         public User(int id, string username, string password)
         {
             Id = id;

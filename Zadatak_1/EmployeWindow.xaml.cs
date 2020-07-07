@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Zadatak_1.ViewModel;
 
 namespace Zadatak_1
 {
@@ -19,9 +20,17 @@ namespace Zadatak_1
     /// </summary>
     public partial class EmployeWindow : Window
     {
+        EmployeViewModel evm = new EmployeViewModel();
+
         public EmployeWindow()
         {
             InitializeComponent();
+            DataContext = evm;
+        }
+
+        private void Approve_Btn(object sender, RoutedEventArgs e)
+        {
+            evm.Approve();
         }
     }
 }
