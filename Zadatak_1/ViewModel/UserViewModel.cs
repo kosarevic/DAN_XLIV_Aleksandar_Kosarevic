@@ -12,6 +12,9 @@ using Zadatak_1.Model;
 
 namespace Zadatak_1.ViewModel
 {
+    /// <summary>
+    /// Class responsible for generating data ment for UserWindow grid table.
+    /// </summary>
     class UserViewModel : INotifyPropertyChanged
     {
         static readonly string ConnectionString = @"Data Source=(local);Initial Catalog=Zadatak_1;Integrated Security=True;";
@@ -43,7 +46,7 @@ namespace Zadatak_1.ViewModel
                 }
             }
         }
-
+        //Total price of all orders is being refreshed with each change to its value.
         private int totalPrice;
 
         public int TotalPrice
@@ -58,7 +61,9 @@ namespace Zadatak_1.ViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Method fills the list dedicated to the coresponding window.
+        /// </summary>
         public void FillList()
         {
             using (SqlConnection conn = new SqlConnection(ConnectionString))
@@ -88,17 +93,22 @@ namespace Zadatak_1.ViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Method executed upon button press to confirm order creation.
+        /// </summary>
+        /// <param name="CurrentUser"></param>
         public void CreateOrder(User CurrentUser)
         {
+            //Total price calculated for all orders chosen by the user.
             int total = 0;
             foreach (var row in UserWindowModels)
             {
                 total += row.Meal.Price * row.Amount;
             }
-
+            //Validation so that order cannot contain no values.
             if (total != 0)
             {
+                //Order is inserted into database.
                 using (var conn = new SqlConnection(ConnectionString))
                 {
                     var cmd = new SqlCommand(@"insert into tblOrder values (@UserId, @Time, @Amount, @Approved);", conn);
@@ -116,7 +126,7 @@ namespace Zadatak_1.ViewModel
             }
             else
             {
-                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Incorect order ammounts, please try again.", "Notification");
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Order amounts can't be 0, please try again.", "Notification");
             }
         }
 

@@ -5,10 +5,14 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Zadatak_1.Model;
 
 namespace Zadatak_1.Validation
 {
+    /// <summary>
+    /// Class made with sole purpose for validation if user has pending order.
+    /// </summary>
     public static class OrderValidation
     {
 
@@ -47,6 +51,7 @@ namespace Zadatak_1.Validation
             {
                 if(u.Id == o.User.Id && o.Approved == false)
                 {
+                    MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show($"You already have order (Order Id: {o.Id}, Price: {o.Price}) with pending approval, please try again latter.", "Notification");
                     return true;
                 }
             }

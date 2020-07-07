@@ -33,6 +33,7 @@ namespace Zadatak_1
             SqlConnection sqlCon = new SqlConnection(@"Data Source=(local); Initial Catalog=Zadatak_1; Integrated Security=True;");
             try
             {
+                //User is extracted from the database matching inserted paramaters Username and Password.
                 SqlCommand query = new SqlCommand("SELECT * FROM tblUser WHERE Username=@Username AND Password=@Password", sqlCon);
                 query.CommandType = CommandType.Text;
                 query.Parameters.AddWithValue("@Username", txtUsername.Text);
@@ -52,15 +53,17 @@ namespace Zadatak_1
                         Password = row[2].ToString()
                     };
                 }
-
+                //If username is as value below, Employe window is engaged.
                 if (user.Username == "Zaposleni")
                 {
                     EmployeWindow dashboard = new EmployeWindow();
                     dashboard.Show();
                     this.Close();
                 }
+                //If username is as value below, User window is engaged.
                 else if (user.Password == "Gost")
                 {
+                    //Validation if user has pending order to be approved.
                     if (!OrderValidation.UserHasOrder(user))
                     {
                         UserWindow dashboard = new UserWindow(user);
@@ -69,7 +72,7 @@ namespace Zadatak_1
                     }
                     else
                     {
-                        MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("You already have order with pending approval, please try again latter.", "Notification");
+                        //If user has order with pending approval, application exits to the login screen.
                         return;
                     }
                 }

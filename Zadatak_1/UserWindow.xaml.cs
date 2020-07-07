@@ -31,11 +31,11 @@ namespace Zadatak_1
             DataContext = uvm;
             CurrentUser = user;
         }
-
+        //Method initiated when user makes desired order.
         private void Btn_Ok(object sender, RoutedEventArgs e)
         {
             uvm.CreateOrder(CurrentUser);
-
+            //Validation added if user inserts invalid values, so that he can correct invalid inputs.
             if (OrderMade)
             {
                 OrderMade = true;
@@ -44,7 +44,7 @@ namespace Zadatak_1
                 this.Close(); 
             }
         }
-
+        //Method initiated if user cancels process of creating order.
         private void Btn_Cancel(object sender, RoutedEventArgs e)
         {
             LoginScreen login = new LoginScreen();

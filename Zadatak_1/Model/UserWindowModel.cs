@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Zadatak_1.Model
 {
+    /// <summary>
+    /// Class responsible for generating objects dedicated to UserWindow data grid.
+    /// </summary>
     class UserWindowModel
     {
 

@@ -11,6 +11,9 @@ using Zadatak_1.Model;
 
 namespace Zadatak_1.ViewModel
 {
+    /// <summary>
+    /// Class responsible for generating data to the EmployeWindow grid table.
+    /// </summary>
     class EmployeViewModel : INotifyPropertyChanged
     {
         static readonly string ConnectionString = @"Data Source=(local);Initial Catalog=Zadatak_1;Integrated Security=True;";
@@ -35,7 +38,9 @@ namespace Zadatak_1.ViewModel
         {
             FillList();
         }
-
+        /// <summary>
+        /// Method fills the list dedicated to the coresponding window.
+        /// </summary>
         public void FillList()
         {
             using (SqlConnection conn = new SqlConnection(ConnectionString))
@@ -63,7 +68,9 @@ namespace Zadatak_1.ViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Method executed when button confirmation is engaged. Ment to confirm order being approved to the user.
+        /// </summary>
         public void Approve()
         {
             var con = new SqlConnection(ConnectionString);
@@ -75,7 +82,9 @@ namespace Zadatak_1.ViewModel
             Orders.Clear();
             FillList();
         }
-
+        /// <summary>
+        /// Method responsible for removing existing order from the grid.
+        /// </summary>
         public void DeleteOrder()
         {
             var con = new SqlConnection(ConnectionString);

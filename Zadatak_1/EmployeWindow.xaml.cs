@@ -27,17 +27,17 @@ namespace Zadatak_1
             InitializeComponent();
             DataContext = evm;
         }
-
+        //Button click initiates approval of the order.
         private void Approve_Btn(object sender, RoutedEventArgs e)
         {
             evm.Approve();
         }
-
+        //Button click initiates deletation of the order.
         private void Delete_Btn(object sender, RoutedEventArgs e)
         {
             evm.DeleteOrder();
         }
-
+        //Button logs out employe.
         private void Cancel_Btn(object sender, RoutedEventArgs e)
         {
             LoginScreen login = new LoginScreen();
