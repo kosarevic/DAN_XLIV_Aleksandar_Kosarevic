@@ -9,7 +9,7 @@
         Title="EmployeWindow" Height="450" Width="800">
     <Grid>
         <TextBlock TextAlignment="Center" Text="All Orders" Foreground="#282828" Margin="298,20,302,360" HorizontalAlignment="Center" FontSize="25" Width="192"/>
-        <DataGrid x:Name="datagrid" ItemsSource="{Binding Orders}" AutoGenerateColumns="False" CanUserAddRows="False" Width="408" Margin="201,85,183,82" HorizontalAlignment="Center" SelectedItem="{Binding Order, UpdateSourceTrigger=PropertyChanged}">
+        <DataGrid x:Name="datagrid" ItemsSource="{Binding Orders}" AutoGenerateColumns="False" CanUserAddRows="False" Width="498" Margin="154,93,140,74" HorizontalAlignment="Center" SelectedItem="{Binding Order, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Order ID" Binding="{Binding Id}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="User ID" Binding="{Binding User.Id}" IsReadOnly="True"/>
@@ -19,7 +19,14 @@
                 <DataGridTemplateColumn Header="Approve">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Click="Approve_Btn" Content="E"/>
+                            <Button Click="Approve_Btn" Content="Approve"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Delete_Btn" Content="Delete"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

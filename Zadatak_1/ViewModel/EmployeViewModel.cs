@@ -72,10 +72,21 @@ namespace Zadatak_1.ViewModel
             cmd.Parameters.AddWithValue("@Approved", true);
             cmd.Parameters.AddWithValue("@OrderID", Order.Id);
             cmd.ExecuteNonQuery();
-            con.Close();
-            con.Dispose();
             Orders.Clear();
             FillList();
+        }
+
+        public void DeleteOrder()
+        {
+            var con = new SqlConnection(ConnectionString);
+            con.Open();
+            var cmd = new SqlCommand("delete from tblOrder where OrderID = @OrderID;", con);
+            cmd.Parameters.AddWithValue("@OrderID", Order.Id);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            con.Dispose();
+            Orders.Remove(Order);
+            var messageBoxResult = System.Windows.MessageBox.Show("Delete Successfull", "Notification");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

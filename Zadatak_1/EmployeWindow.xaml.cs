@@ -32,5 +32,10 @@ namespace Zadatak_1
         {
             evm.Approve();
         }
+
+        private void Delete_Btn(object sender, RoutedEventArgs e)
+        {
+            evm.DeleteOrder();
+        }
     }
 }

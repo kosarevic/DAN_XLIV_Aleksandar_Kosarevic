@@ -64,6 +64,7 @@
     <Compile Include="UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Validation\OrderValidation.cs" />
     <Compile Include="ViewModel\EmployeViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
     <Page Include="EmployeWindow.xaml">

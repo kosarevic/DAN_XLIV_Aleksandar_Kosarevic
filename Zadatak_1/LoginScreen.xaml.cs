@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Zadatak_1.Model;
+using Zadatak_1.Validation;
 
 namespace Zadatak_1
 {
@@ -60,9 +61,17 @@ namespace Zadatak_1
                 }
                 else if (user.Password == "Gost")
                 {
-                    UserWindow dashboard = new UserWindow(user);
-                    dashboard.Show();
-                    this.Close();
+                    if (!OrderValidation.UserHasOrder(user))
+                    {
+                        UserWindow dashboard = new UserWindow(user);
+                        dashboard.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("You already have order with pending approval, try again latter.", "Notification");
+                        return;
+                    }
                 }
                 else
                 {
