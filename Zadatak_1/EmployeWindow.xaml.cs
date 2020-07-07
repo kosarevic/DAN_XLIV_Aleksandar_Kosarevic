@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Zadatak_1
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for EmployeWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EmployeWindow : Window
     {
-        public MainWindow()
+        public EmployeWindow()
         {
             InitializeComponent();
         }
