@@ -37,5 +37,12 @@ namespace Zadatak_1
         {
             evm.DeleteOrder();
         }
+
+        private void Cancel_Btn(object sender, RoutedEventArgs e)
+        {
+            LoginScreen login = new LoginScreen();
+            login.Show();
+            this.Close();
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Zadatak_1.Model;
 
 namespace Zadatak_1.ViewModel
@@ -15,7 +16,6 @@ namespace Zadatak_1.ViewModel
     {
         static readonly string ConnectionString = @"Data Source=(local);Initial Catalog=Zadatak_1;Integrated Security=True;";
         public ObservableCollection<UserWindowModel> UserWindowModels { get; set; }
-
 
         public UserViewModel()
         {
@@ -33,6 +33,28 @@ namespace Zadatak_1.ViewModel
                 {
                     row = value;
                     OnPropertyChanged("Row");
+
+                    TotalPrice = 0;
+
+                    foreach (var item in UserWindowModels)
+                    {
+                        TotalPrice += item.Amount * item.Meal.Price;
+                    }
+                }
+            }
+        }
+
+        private int totalPrice;
+
+        public int TotalPrice
+        {
+            get { return totalPrice; }
+            set
+            {
+                if (totalPrice != value)
+                {
+                    totalPrice = value;
+                    OnPropertyChanged("TotalPrice");
                 }
             }
         }
@@ -75,17 +97,26 @@ namespace Zadatak_1.ViewModel
                 total += row.Meal.Price * row.Amount;
             }
 
-            using (var conn = new SqlConnection(ConnectionString))
+            if (total != 0)
             {
-                var cmd = new SqlCommand(@"insert into tblOrder values (@UserId, @Time, @Amount, @Approved);", conn);
-                cmd.Parameters.AddWithValue("@UserId", CurrentUser.Id);
-                cmd.Parameters.AddWithValue("@Time", DateTime.Now);
-                cmd.Parameters.AddWithValue("@Amount", total);
-                cmd.Parameters.AddWithValue("@Approved", false);
+                using (var conn = new SqlConnection(ConnectionString))
+                {
+                    var cmd = new SqlCommand(@"insert into tblOrder values (@UserId, @Time, @Amount, @Approved);", conn);
+                    cmd.Parameters.AddWithValue("@UserId", CurrentUser.Id);
+                    cmd.Parameters.AddWithValue("@Time", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@Amount", total);
+                    cmd.Parameters.AddWithValue("@Approved", false);
 
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    UserWindow.OrderMade = true;
+                    MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Order successfully created.", "Notification");
+                }
+            }
+            else
+            {
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Incorect order ammounts, please try again.", "Notification");
             }
         }
 

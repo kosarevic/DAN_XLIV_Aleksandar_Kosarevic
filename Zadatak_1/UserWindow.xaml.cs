@@ -23,6 +23,7 @@ namespace Zadatak_1
     {
         UserViewModel uvm = new UserViewModel();
         public User CurrentUser = new User();
+        public static bool OrderMade = false;
 
         public UserWindow(User user)
         {
@@ -34,10 +35,14 @@ namespace Zadatak_1
         private void Btn_Ok(object sender, RoutedEventArgs e)
         {
             uvm.CreateOrder(CurrentUser);
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Order successfully created.", "Notification");
-            LoginScreen login = new LoginScreen();
-            login.Show();
-            this.Close();
+
+            if (OrderMade)
+            {
+                OrderMade = true;
+                LoginScreen login = new LoginScreen();
+                login.Show();
+                this.Close(); 
+            }
         }
 
         private void Btn_Cancel(object sender, RoutedEventArgs e)

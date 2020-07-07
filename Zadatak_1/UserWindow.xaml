@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         WindowStartupLocation="CenterScreen"
-        xmlns:local="clr-namespace:Zadatak_1"
+        xmlns:local="clr-namespace:Zadatak_1.ViewModel"
         mc:Ignorable="d"
         Title="UserWindow" Height="450" Width="800">
     <Grid>
@@ -18,5 +18,7 @@
         </DataGrid>
         <Button Content="Ok" HorizontalAlignment="Left" Margin="303,358,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Ok"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="415,358,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Cancel"/>
+        <TextBlock HorizontalAlignment="Left" Margin="617,362,0,0" TextWrapping="Wrap" Text="{Binding TotalPrice, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="86"/>
+        <TextBlock HorizontalAlignment="Left" Margin="542,362,0,0" TextWrapping="Wrap" Text="Total Price:" VerticalAlignment="Top"/>
     </Grid>
 </Window>

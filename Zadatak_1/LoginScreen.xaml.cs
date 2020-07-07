@@ -69,7 +69,7 @@ namespace Zadatak_1
                     }
                     else
                     {
-                        MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("You already have order with pending approval, try again latter.", "Notification");
+                        MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("You already have order with pending approval, please try again latter.", "Notification");
                         return;
                     }
                 }

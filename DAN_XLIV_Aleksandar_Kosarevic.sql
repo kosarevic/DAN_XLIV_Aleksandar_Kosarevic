@@ -36,8 +36,10 @@ Approved bit
 )
 
 insert into tblUser values ('1111111111111', 'Gost');
+insert into tblUser values ('1111111111112', 'Gost');
+insert into tblUser values ('1111111111113', 'Gost');
 insert into tblUser values ('Zaposleni','Zaposleni');
 
-insert into tblMeal values ('Meal 1', 100,0);
-insert into tblMeal values ('Meal 2', '200');
-insert into tblMeal values ('Meal 3', '300');
+insert into tblMeal values ('Meal 1', 100);
+insert into tblMeal values ('Meal 2', 200);
+insert into tblMeal values ('Meal 3', 300);
