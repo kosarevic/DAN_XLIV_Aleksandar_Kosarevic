@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Zadatak_1.Model;
+using Zadatak_1.ViewModel;
 
 namespace Zadatak_1
 {
@@ -19,9 +21,30 @@ namespace Zadatak_1
     /// </summary>
     public partial class UserWindow : Window
     {
-        public UserWindow()
+        UserViewModel uvm = new UserViewModel();
+        public User CurrentUser = new User();
+
+        public UserWindow(User user)
         {
             InitializeComponent();
+            DataContext = uvm;
+            CurrentUser = user;
+        }
+
+        private void Btn_Ok(object sender, RoutedEventArgs e)
+        {
+            uvm.CreateOrder(CurrentUser);
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Order successfully created.", "Notification");
+            LoginScreen login = new LoginScreen();
+            login.Show();
+            this.Close();
+        }
+
+        private void Btn_Cancel(object sender, RoutedEventArgs e)
+        {
+            LoginScreen login = new LoginScreen();
+            login.Show();
+            this.Close();
         }
     }
 }

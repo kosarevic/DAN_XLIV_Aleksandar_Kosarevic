@@ -60,7 +60,7 @@ namespace Zadatak_1
                 }
                 else if (user.Password == "Gost")
                 {
-                    UserWindow dashboard = new UserWindow();
+                    UserWindow dashboard = new UserWindow(user);
                     dashboard.Show();
                     this.Close();
                 }

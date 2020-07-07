@@ -58,6 +58,9 @@
     <Compile Include="EmployeWindow.xaml.cs">
       <DependentUpon>EmployeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Meal.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\UserWindowModel.cs" />
     <Compile Include="UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
